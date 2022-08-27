@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    
+    <title>Expense Item</title>
+    <meta name="description" content="App for Marketplace of MoySklad">
+    <meta name="author" content="sloudel@yandex.ru">
+
+	<style>.selectize-control.plugin-drag_drop.multi>.selectize-input>div.ui-sortable-placeholder{visibility:visible!important;background:#f2f2f2!important;background:rgba(0,0,0,.06)!important;border:0 none!important;-webkit-box-shadow:inset 0 0 12px 4px #fff;box-shadow:inset 0 0 12px 4px #fff}.selectize-control.plugin-drag_drop .ui-sortable-placeholder::after{content:'!';visibility:hidden}.selectize-control.plugin-drag_drop .ui-sortable-helper{-webkit-box-shadow:0 2px 5px rgba(0,0,0,.2);box-shadow:0 2px 5px rgba(0,0,0,.2)}.selectize-dropdown-header{position:relative;padding:3px 12px;border-bottom:1px solid #d0d0d0;background:#f8f8f8;-webkit-border-radius:4px 4px 0 0;-moz-border-radius:4px 4px 0 0;border-radius:4px 4px 0 0}.selectize-dropdown-header-close{position:absolute;right:12px;top:50%;color:#333;opacity:.4;margin-top:-12px;line-height:15px;font-size:20px!important}.selectize-dropdown-header-close:hover{color:#000}.selectize-dropdown.plugin-optgroup_columns .optgroup{border-right:1px solid #f2f2f2;border-top:0 none;float:left;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.selectize-dropdown.plugin-optgroup_columns .optgroup:last-child{border-right:0 none}.selectize-dropdown.plugin-optgroup_columns .optgroup:before{display:none}.selectize-dropdown.plugin-optgroup_columns .optgroup-header{border-top:0 none}.selectize-control.plugin-remove_button [data-value]{position:relative;padding-right:24px!important}.selectize-control.plugin-remove_button [data-value] .remove{z-index:1;position:absolute;top:0;right:0;bottom:0;width:17px;text-align:center;font-weight:700;font-size:12px;color:inherit;text-decoration:none;vertical-align:middle;display:inline-block;padding:1px 0 0 0;border-left:1px solid transparent;-webkit-border-radius:0 2px 2px 0;-moz-border-radius:0 2px 2px 0;border-radius:0 2px 2px 0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.selectize-control.plugin-remove_button [data-value] .remove:hover{background:rgba(0,0,0,.05)}.selectize-control.plugin-remove_button [data-value].active .remove{border-left-color:transparent}.selectize-control.plugin-remove_button .disabled [data-value] .remove:hover{background:0 0}.selectize-control.plugin-remove_button .disabled [data-value] .remove{border-left-color:rgba(77,77,77,0)}.selectize-control.plugin-remove_button .remove-single{position:absolute;right:0;top:0;font-size:23px}.selectize-control{position:relative}.selectize-dropdown,.selectize-input,.selectize-input input{color:#333;font-family:inherit;font-size:inherit;line-height:15px;-webkit-font-smoothing:inherit}.selectize-control.single .selectize-input.input-active,.selectize-input{background:#fff;cursor:text;display:inline-block}.selectize-input{border:1px solid #ccc;padding:3px 6px;display:inline-block;width:100%;overflow:hidden;position:relative;z-index:1;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-box-shadow:none;box-shadow:none;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}.selectize-control.multi .selectize-input.has-items{padding:5px 12px 2px}.selectize-input.full{background-color:#fff}.selectize-input.disabled,.selectize-input.disabled *{cursor:default!important}.selectize-input.focus{-webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,.15);box-shadow:inset 0 1px 2px rgba(0,0,0,.15)}.selectize-input.dropdown-active{-webkit-border-radius:4px 4px 0 0;-moz-border-radius:4px 4px 0 0;border-radius:4px 4px 0 0}.selectize-input>*{vertical-align:baseline;display:-moz-inline-stack;display:inline-block;zoom:1}.selectize-control.multi .selectize-input>div{cursor:pointer;margin:0 3px 3px 0;padding:1px 3px;background:#efefef;color:#333;border:0 solid transparent}.selectize-control.multi .selectize-input>div.active{background:#428bca;color:#fff;border:0 solid transparent}.selectize-control.multi .selectize-input.disabled>div,.selectize-control.multi .selectize-input.disabled>div.active{color:grey;background:#fff;border:0 solid rgba(77,77,77,0)}.selectize-input>input{display:inline-block!important;padding:0!important;min-height:0!important;max-height:none!important;max-width:100%!important;margin:0!important;text-indent:0!important;border:0 none!important;background:0 0!important;line-height:inherit!important;-webkit-user-select:auto!important;-webkit-box-shadow:none!important;box-shadow:none!important}.selectize-input>input::-ms-clear{display:none}.selectize-input>input:focus{outline:0!important}.selectize-input::after{content:' ';display:block;clear:left}.selectize-input.dropdown-active::before{content:' ';display:block;position:absolute;background:#fff;height:1px;bottom:0;left:0;right:0}.selectize-dropdown{position:absolute;z-index:10;border:1px solid #d0d0d0;background:#fff;margin:-1px 0 0 0;border-top:0 none;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-box-shadow:0 1px 3px rgba(0,0,0,.1);box-shadow:0 1px 3px rgba(0,0,0,.1);-webkit-border-radius:0 0 4px 4px;-moz-border-radius:0 0 4px 4px;border-radius:0 0 4px 4px}.selectize-dropdown [data-selectable]{cursor:pointer;overflow:hidden}.selectize-dropdown [data-selectable] .highlight{background:rgba(255,237,40,.4);-webkit-border-radius:1px;-moz-border-radius:1px;border-radius:1px}.selectize-dropdown .optgroup-header,.selectize-dropdown .option{padding:3px 12px}.selectize-dropdown .option,.selectize-dropdown [data-disabled],.selectize-dropdown [data-disabled] [data-selectable].option{cursor:inherit;opacity:.5}.selectize-dropdown [data-selectable].option{opacity:1}.selectize-dropdown .optgroup:first-child .optgroup-header{border-top:0 none}.selectize-dropdown .optgroup-header{color:#777;background:#fff;cursor:default}.selectize-dropdown .active{background-color:#f5f5f5;color:#262626}.selectize-dropdown .active.create{color:#262626}.selectize-dropdown .create{color:rgba(51,51,51,.5)}.selectize-dropdown-content{overflow-y:auto;overflow-x:hidden;max-height:120px;-webkit-overflow-scrolling:touch}.selectize-control.single .selectize-input,.selectize-control.single .selectize-input input{cursor:pointer}.selectize-control.single .selectize-input.input-active,.selectize-control.single .selectize-input.input-active input{cursor:text}.selectize-control.single .selectize-input:after{content:' ';display:block;position:absolute;top:50%;right:17px;margin-top:-3px;width:0;height:0;border-style:solid;border-width:5px 5px 0 5px;border-color:#333 transparent transparent transparent}.selectize-control.single .selectize-input.dropdown-active:after{margin-top:-4px;border-width:0 5px 5px 5px;border-color:transparent transparent #333 transparent}.selectize-control.rtl.single .selectize-input:after{left:17px;right:auto}.selectize-control.rtl .selectize-input>input{margin:0 4px 0 -2px!important}.selectize-control .selectize-input.disabled{opacity:.5;background-color:#fff}.selectize-dropdown,.selectize-dropdown.form-control{height:auto;padding:0;margin:2px 0 0 0;z-index:1000;background:#fff;border:1px solid #ccc;border:1px solid rgba(0,0,0,.15);-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:0 6px 12px rgba(0,0,0,.175);box-shadow:0 6px 12px rgba(0,0,0,.175)}.selectize-dropdown .optgroup-header{font-size:12px;line-height:1.42857143}.selectize-dropdown .optgroup:first-child:before{display:none}.selectize-dropdown .optgroup:before{content:' ';display:block;height:1px;margin:9px 0;overflow:hidden;background-color:#e5e5e5;margin-left:-12px;margin-right:-12px}.selectize-dropdown-content{padding:5px 0}.selectize-dropdown-header{padding:3px 6px}.selectize-input{min-height:20px}.selectize-input.dropdown-active{-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px}.selectize-input.dropdown-active::before{display:none}.selectize-input.focus{border-color:#66afe9;outline:0;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)}.has-error .selectize-input{border-color:#a94442;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075)}.has-error .selectize-input:focus{border-color:#843534;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #ce8483;box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #ce8483}.selectize-control.multi .selectize-input.has-items{padding-left:9px;padding-right:9px}.selectize-control.multi .selectize-input>div{-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px}.form-control.selectize-control{padding:0;height:auto;border:none;background:0 0;-webkit-box-shadow:none;box-shadow:none;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0}</style>
+	<style>
+
+        .hljs{display:block;overflow-x:auto;padding:.5em;background:#2b2b2b;color:#bababa}.hljs-emphasis,.hljs-strong{color:#a8a8a2}.hljs-bullet,.hljs-link,.hljs-literal,.hljs-number,.hljs-quote,.hljs-regexp{color:#6896ba}.hljs-code,.hljs-selector-class{color:#a6e22e}.hljs-emphasis{font-style:italic}.hljs-attribute,.hljs-keyword,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-variable{color:#cb7832}.hljs-params{color:#b9b9b9}.hljs-string{color:#6a8759}.hljs-addition,.hljs-built_in,.hljs-builtin-name,.hljs-selector-attr,.hljs-selector-id,.hljs-selector-pseudo,.hljs-subst,.hljs-symbol,.hljs-template-tag,.hljs-template-variable,.hljs-type{color:#e0c46c}.hljs-comment,.hljs-deletion,.hljs-meta{color:#7f7f7f}@font-face{font-family:'HelveticaNeueCyr';src:url(../fonts/HelveticaNeueCyr-UltraLight.eot);src:local("HelveticaNeueCyr-UltraLight"),url(../fonts/HelveticaNeueCyr-UltraLight.eot?#iefix) format("embedded-opentype"),url(../fonts/HelveticaNeueCyr-UltraLight.woff) format("woff"),url(../fonts/HelveticaNeueCyr-UltraLight.ttf) format("truetype");font-weight:100;font-style:normal}@font-face{font-family:'HelveticaNeueCyr';src:url(../fonts/HelveticaNeueCyr-UltraLightItalic.eot);src:local("HelveticaNeueCyr-UltraLightItalic"),url(../fonts/HelveticaNeueCyr-UltraLightItalic.eot?#iefix) format("embedded-opentype"),url(../fonts/HelveticaNeueCyr-UltraLightItalic.woff) format("woff"),url(../fonts/HelveticaNeueCyr-UltraLightItalic.ttf) format("truetype");font-weight:100;font-style:italic}@font-face{font-family:'HelveticaNeueCyr';src:url(../fonts/HelveticaNeueCyr-Thin.eot);src:local("HelveticaNeueCyr-Thin"),url(../fonts/HelveticaNeueCyr-Thin.eot?#iefix) format("embedded-opentype"),url(../fonts/HelveticaNeueCyr-Thin.woff) format("woff"),url(../fonts/HelveticaNeueCyr-Thin.ttf) format("truetype");font-weight:200;font-style:normal}@font-face{font-family:'HelveticaNeueCyr';src:url(../fonts/HelveticaNeueCyr-ThinItalic.eot);src:local("HelveticaNeueCyr-ThinItalic"),url(../fonts/HelveticaNeueCyr-ThinItalic.eot?#iefix) format("embedded-opentype"),url(../fonts/HelveticaNeueCyr-ThinItalic.woff) format("woff"),url(../fonts/HelveticaNeueCyr-ThinItalic.ttf) format("truetype");font-weight:200;font-style:italic}@font-face{font-family:'HelveticaNeueCyr';src:url(../fonts/HelveticaNeueCyr-Light.eot);src:local("HelveticaNeueCyr-Light"),url(../fonts/HelveticaNeueCyr-Light.eot?#iefix) format("embedded-opentype"),url(../fonts/HelveticaNeueCyr-Light.woff) format("woff"),url(../fonts/HelveticaNeueCyr-Light.ttf) format("truetype");font-weight:200;font-style:normal}@font-face{font-family:'HelveticaNeueCyr';src:url(../fonts/HelveticaNeueCyr-LightItalic.eot);src:local("HelveticaNeueCyr-LightItalic"),url(../fonts/HelveticaNeueCyr-LightItalic.eot?#iefix) format("embedded-opentype"),url(../fonts/HelveticaNeueCyr-LightItalic.woff) format("woff"),url(../fonts/HelveticaNeueCyr-LightItalic.ttf) format("truetype");font-weight:200;font-style:italic}@font-face{font-family:'HelveticaNeueCyr';src:url(../fonts/HelveticaNeueCyr-Roman.eot);src:local("HelveticaNeueCyr-Roman"),url(../fonts/HelveticaNeueCyr-Roman.eot?#iefix) format("embedded-opentype"),url(../fonts/HelveticaNeueCyr-Roman.woff) format("woff"),url(../fonts/HelveticaNeueCyr-Roman.ttf) format("truetype");font-weight:400;font-style:normal}@font-face{font-family:'HelveticaNeueCyr';src:url(../fonts/HelveticaNeueCyr-Italic.eot);src:local("HelveticaNeueCyr-Italic"),url(../fonts/HelveticaNeueCyr-Italic.eot?#iefix) format("embedded-opentype"),url(../fonts/HelveticaNeueCyr-Italic.woff) format("woff"),url(../fonts/HelveticaNeueCyr-Italic.ttf) format("truetype");font-weight:400;font-style:italic}@font-face{font-family:'HelveticaNeueCyr';src:url(../fonts/HelveticaNeueCyr-Medium.eot);src:local("HelveticaNeueCyr-Medium"),url(../fonts/HelveticaNeueCyr-Medium.eot?#iefix) format("embedded-opentype"),url(../fonts/HelveticaNeueCyr-Medium.woff) format("woff"),url(../fonts/HelveticaNeueCyr-Medium.ttf) format("truetype");font-weight:500;font-style:normal}@font-face{font-family:'HelveticaNeueCyr';src:url(../fonts/HelveticaNeueCyr-MediumItalic.eot);src:local("HelveticaNeueCyr-MediumItalic"),url(../fonts/HelveticaNeueCyr-MediumItalic.eot?#iefix) format("embedded-opentype"),url(../fonts/HelveticaNeueCyr-MediumItalic.woff) format("woff"),url(../fonts/HelveticaNeueCyr-MediumItalic.ttf) format("truetype");font-weight:500;font-style:italic}@font-face{font-family:'HelveticaNeueCyr';src:url(../fonts/HelveticaNeueCyr-Bold.eot);src:local("HelveticaNeueCyr-Bold"),url(../fonts/HelveticaNeueCyr-Bold.eot?#iefix) format("embedded-opentype"),url(../fonts/HelveticaNeueCyr-Bold.woff) format("woff"),url(../fonts/HelveticaNeueCyr-Bold.ttf) format("truetype");font-weight:600;font-style:normal}@font-face{font-family:'HelveticaNeueCyr';src:url(../fonts/HelveticaNeueCyr-BoldItalic.eot);src:local("HelveticaNeueCyr-BoldItalic"),url(../fonts/HelveticaNeueCyr-BoldItalic.eot?#iefix) format("embedded-opentype"),url(../fonts/HelveticaNeueCyr-BoldItalic.woff) format("woff"),url(../fonts/HelveticaNeueCyr-BoldItalic.ttf) format("truetype");font-weight:600;font-style:italic}@font-face{font-family:'HelveticaNeueCyr';src:url(../fonts/HelveticaNeueCyr-Heavy.eot);src:local("HelveticaNeueCyr-Heavy"),url(../fonts/HelveticaNeueCyr-Heavy.eot?#iefix) format("embedded-opentype"),url(../fonts/HelveticaNeueCyr-Heavy.woff) format("woff"),url(../fonts/HelveticaNeueCyr-Heavy.ttf) format("truetype");font-weight:700;font-style:normal}@font-face{font-family:'HelveticaNeueCyr';src:url(../fonts/HelveticaNeueCyr-HeavyItalic.eot);src:local("HelveticaNeueCyr-HeavyItalic"),url(../fonts/HelveticaNeueCyr-HeavyItalic.eot?#iefix) format("embedded-opentype"),url(../fonts/HelveticaNeueCyr-HeavyItalic.woff) format("woff"),url(../fonts/HelveticaNeueCyr-HeavyItalic.ttf) format("truetype");font-weight:700;font-style:italic}@font-face{font-family:'HelveticaNeueCyr';src:url(../fonts/HelveticaNeueCyr-Black.eot);src:local("HelveticaNeueCyr-Black"),url(../fonts/HelveticaNeueCyr-Black.eot?#iefix) format("embedded-opentype"),url(../fonts/HelveticaNeueCyr-Black.woff) format("woff"),url(../fonts/HelveticaNeueCyr-Black.ttf) format("truetype");font-weight:800;font-style:normal}@font-face{font-family:'HelveticaNeueCyr';src:url(../fonts/HelveticaNeueCyr-BlackItalic.eot);src:local("HelveticaNeueCyr-BlackItalic"),url(../fonts/HelveticaNeueCyr-BlackItalic.eot?#iefix) format("embedded-opentype"),url(../fonts/HelveticaNeueCyr-BlackItalic.woff) format("woff"),url(../fonts/HelveticaNeueCyr-BlackItalic.ttf) format("truetype");font-weight:800;font-style:italic}*,::after,::before{box-sizing:inherit}html{box-sizing:border-box}.markup-example{padding:20px 0}.markup-example:not(:first-child){border-top:1px solid}.markup-example>div:not(:first-child){margin-top:20px}.container{margin-left:auto;margin-right:auto;padding-left:.9375rem;padding-right:.9375rem}.h1,.h2,.h3,h1,h2,h3,p{margin-top:0;margin-bottom:10px;font-family:"Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif}.h1,.h2,h1,h2{font-size:18px!important;font-weight:400;color:#222}.h2,h2{font-size:15px!important;color:#cc420c}.h3,h3{font-size:12px!important;font-weight:600;color:#222}p{font-size:12px}.caption,caption{font-style:italic}caption{padding:10px 0;font-size:12px;font-family:"Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif}.error{color:red}.caption,caption{color:#777}.ui-input,.ui-select+.selectivity-dropdown{font-family:"Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;font-size:12px}.ui-input{min-width:250px;height:21px;padding:0 5px;border:solid 1px #bfbfbf}.ui-select.selectivity-input{width:auto;cursor:pointer}.ui-select+.selectivity-dropdown{max-width:250px;box-shadow:0 1px 3px 0 #c8c8c8;border:solid 1px #999;border-radius:0}.ui-select+.selectivity-dropdown .selectivity-result-item{padding:2px 5px;border-radius:0}.ui-select .selectivity-single-select{position:relative;min-width:250px;min-height:21px;border:solid 1px #bfbfbf;border-radius:0;background-color:transparent;background-image:url(../img/arrow_top.png);background-repeat:no-repeat;background-size:20px;background-position:100% center;padding:0 3px;box-sizing:border-box;-webkit-appearance:none;-moz-appearance:none;appearance:none}.ui-select .selectivity-single-select .selectivity-single-result-container{top:2px}.ui-select .selectivity-single-select-input{height:19px;padding:0;border:0}.option,.ui-select,.ui-select-custom{font-size:12px;font-family:"Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif}.ui-select-custom.selectivity-input{width:142px;cursor:pointer}.ui-select-custom+.selectivity-dropdown{font-size:12px;font-family:"Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;max-width:142px;box-shadow:0 1px 3px 0 #c8c8c8;border:solid 1px #999;border-radius:0}.ui-select-custom+.selectivity-dropdown .selectivity-result-item{padding:2px 15px;border-radius:0}.ui-select-custom .selectivity-single-select{position:relative;min-width:142px;height:30px;border-radius:3px;border:solid 1px #ccc;padding:5px 0;background-image:url(../img/arrow_top.png),linear-gradient(to bottom,#fff,#e6e6e6);background-repeat:no-repeat;background-size:20px,auto;background-position:95% center;line-height:1;box-sizing:border-box;-webkit-appearance:none;-moz-appearance:none;appearance:none}.ui-select-custom .selectivity-single-select .selectivity-single-result-container{top:8px;left:10px;right:20px}.option{display:block;margin-bottom:10px}.check{position:relative;padding-left:20px}.check__input{position:absolute;left:-999px;opacity:0}.check__box{position:absolute;top:50%;left:0;transform:translateY(-50%);width:12px;height:12px;overflow:hidden;border-radius:2px;background-color:#fff;background-repeat:no-repeat;background-position:50% 50%;box-shadow:0 0 0 .1em #b2b2b2}.check__input:checked+.check__box{background-color:#3b99fc;box-shadow:0 0 0 .1em #2c90fc;background-image:url(../img/check.svg);background-size:7px;background-position:center}.check__input:focus+.check__box{box-shadow:0 0 0 .1em #2c90fc,0 0 0 .2em #7ed321}.check__input:disabled+.check__box{box-shadow:0 0 0 .1em #d8d8d8}.check__input:checked:disabled+.check__box,.radio__input:checked:disabled+.radio__box{background-color:#d8d8d8}.radio{position:relative;padding-left:20px}.radio__input{position:absolute;left:-999px;opacity:0}.radio__box{position:absolute;top:50%;left:0;transform:translateY(-50%);width:12px;height:12px;overflow:hidden;border-radius:50%;background-color:#fff;background-repeat:no-repeat;background-position:50% 50%;box-shadow:0 0 0 .1em #b2b2b2}.radio__input:checked+.radio__box{background-color:#3b99fc;background-image:url(../img/radio.svg);background-size:4px;background-position:center;box-shadow:0 0 0 .1em #2c90fc}.radio__input:focus+.radio__box{box-shadow:0 0 0 .1em #2c90fc,0 0 0 .2em #7ed321}.radio__input:disabled+.radio__box{box-shadow:0 0 0 .1em #d8d8d8}.button{font-family:"Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;font-size:12px;cursor:pointer;color:#222;padding:7px 11px;border-radius:3px;border:1px solid #ccc;background-image:linear-gradient(to bottom,#fff,#e6e6e6);line-height:1}.button:hover{opacity:.8}.button:focus{outline:0;background-image:linear-gradient(to bottom,#e6e6e6,#fff)}.button--success{color:#fff;border:1px solid #a1b900;background-image:linear-gradient(to bottom,#cee356,#a1b900)}.button--success:focus{background-image:linear-gradient(to bottom,#a1b900,#cee356)}.buttons .button:not(:first-child){margin-left:24px}.tabs{font-family:"Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;font-size:12px;line-height:1}.tabs__buttons{display:flex;cursor:pointer;padding:0;margin:0 0 20px}.tabs__button{list-style-type:none;padding:7px 10px 7px 11px;font-size:12px;color:#222;border-top:1px solid #ccc;border-bottom:1px solid #ccc;border-right:1px solid #ccc;background-image:linear-gradient(to bottom,#fff,#e6e6e6)}.tabs__button:first-child{border-left:1px solid #ccc;border-radius:3px 0 0 3px}.tabs__button:last-child{border-radius:0 3px 3px 0}.tabs__button:hover{opacity:.8}.tabs__button.b-active{box-shadow:inset 0 1px 3px 0 rgba(0,0,0,.72);background-image:linear-gradient(to bottom,#e6e6e6,#d6d6d6)}.tabs__item{display:none}.tabs__item.b-active{display:block}.tabs-border{font-family:"Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;font-size:12px;line-height:1}.tabs-border__buttons{display:flex;padding:0;margin:0 0 20px}.tabs-border__button{cursor:pointer;list-style-type:none;padding:5px 10px;font-size:13px;color:#1e6a97;border-top:1px solid transparent;border-right:1px solid transparent;border-bottom:1px solid #186999;border-left:1px solid transparent;margin-right:-1px}.tabs-border__button.b-active{border-top:1px solid #186999;border-right:1px solid #186999;border-bottom:1px solid transparent;border-left:1px solid #186999;font-weight:700;color:#222}.tabs-border__button:hover,.ui-table tbody td a:hover{opacity:.8}.tabs-border__item{display:none}.tabs-border__item.b-active{display:block}.popup{position:relative;z-index:999}.popup.b-hide{display:none}.popup .buttons .button:not(:first-child),.popup .buttons button:not(:first-child){margin-left:7px}.popup__body{position:fixed;top:30%;left:50%;transform:translate(-50%,-50%)}.popup__overlay{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%)}.popup__overlay{width:100vw;height:100vh;background-color:rgba(34,34,34,.5)}.popup__body{font-size:12px;font-family:"Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;background-color:#fff;border:0;margin:0;padding:15px 40px 15px 15px;border-radius:5px;box-shadow:0 0 35px 0 #333;width:100%;max-width:493px;min-height:166px;display:flex;flex-direction:column}.popup__body .h1,.popup__body h1{font-weight:600}.popup__close{border:0;background-color:transparent;width:24px;height:24px;background-position:center;background-size:contain;background-repeat:no-repeat;position:absolute;top:15px;right:15px;border-radius:50%}.popup__close,.popup__close:focus{background-image:url(../img/close.svg)}.popup__title{font-size:20px;font-weight:600;color:#222;margin-bottom:4px}.popup__content{line-height:1.5;margin-bottom:auto}.ui-table{font-family:Tahoma;width:100%;max-width:100%;border-collapse:collapse;background-color:transparent}.ui-table td,.ui-table th{padding:10px;line-height:1.5}.ui-table thead th{font-size:11px;text-align:left;color:#186999;font-weight:400;border-top:none;border-bottom:2px solid #186999}.ui-table tbody td{font-size:11px;color:#222}.ui-table tbody td a,.ui-table tbody td span{color:#186999;text-decoration:none;border-bottom:1px solid #186999}.ui-table tbody tr:not(:first-child) td{border-top:1px solid #ddd;border-bottom:none}.ui-table tfoot td{font-size:11px;color:#222;font-weight:700;border-top:1px solid #186999;border-bottom:none}.ui-table__pager{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:180px;font-weight:400}.ui-table__buttons{font-size:0}.ui-table__buttons a:not(:first-child){margin-left:4px}.ui-table__link{display:inline-block}.ui-table__button{font-family:Tahoma;width:13px;height:13px;border-radius:2px;color:#02679d;border:solid 1px #02679d;background-color:transparent;font-size:8px;padding:0;line-height:1;cursor:pointer}.ui-table__button:hover{opacity:.8}.ui-table__button[disabled]{color:#ccc;border-color:#ccc}.ui-table__button[disabled]:hover{opacity:1}@media (min-width:544px){.container{max-width:576px}}@media (min-width:768px){.container{max-width:720px}}@media (min-width:992px){.container{max-width:940px}}@media (min-width:1200px){.container{max-width:1100px}}
+        body {
+            line-height: 1.5;
+            font-size: 24px;
+            padding-bottom: 200px;
+        }
+
+        input {
+            font-size: 24px;
+        }
+        select {
+            font-size: 24px;
+        }
+
+        .info-box {
+            display: inline-block;
+            padding: 25px;
+        }
+
+        .settings-required {
+            border: red dashed 1px;
+            background-color: lightsalmon;
+        }
+        .settings-required::before {
+            content: "ТРЕБУЕТСЯ НАСТРОЙКА";
+        }
+
+        .ready-for-work {
+            border: green dashed 1px;
+            background-color: lightgreen;
+        }
+        .ready-for-work::before {
+            content: "ПРИЛОЖЕНИЕ ГОТОВО К РАБОТЕ";
+        }
+		td {
+			word-wrap:break-word;
+		}
+		#footer {
+			position: fixed; /* Фиксированное положение */
+			left: 0; bottom: 0; /* Левый нижний угол */
+			padding: 10px; /* Поля вокруг текста */
+			background: #cfcfcf63; /* Цвет фона */
+			color: #fff; /* Цвет текста */
+			width: 100%; /* Ширина слоя */
+			vertical-align: middle;
+			text-align: center;
+		}
+		#header {
+			left: 0; bottom: 0; /* Левый нижний угол */
+			padding: 7px; /* Поля вокруг текста */
+			background: #ffdc94; /* Цвет фона */
+			color: #fff; /* Цвет текста */
+			width: 100%; /* Ширина слоя */
+			vertical-align: middle;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+		#success_header {
+			left: 0; bottom: 0; /* Левый нижний угол */
+			padding: 7px; /* Поля вокруг текста */
+			background: #78F378; /* Цвет фона */
+			color: #fff; /* Цвет текста */
+			width: 100%; /* Ширина слоя */
+			vertical-align: middle;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+		#error_header {
+			left: 0; bottom: 0; /* Левый нижний угол */
+			padding: 7px; /* Поля вокруг текста */
+			background: #FF9494; /* Цвет фона */
+			color: #fff; /* Цвет текста */
+			width: 100%; /* Ширина слоя */
+			vertical-align: middle;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+    </style>
+</head>
+<body>
+
+<center>
+<?php if ($errorMessage) { ?>
+	<div id="error_header">
+		<h3 style='margin: 0;'>
+			<?=$errorMessage?>
+		</h3>
+	</div>
+<?php } ?>
+<?php if ($successMessage) { ?>
+	<div id="success_header">
+		<h3 style='margin: 0;'>
+			<?=$successMessage?>
+		</h3>
+	</div>
+<?php } ?>
+<?php if ($loadedAllData == false) { ?>
+	<div id="header">
+		<form onsubmit="document.getElementById('load-all-data').innerHTML = 'Выполняется...';return true;">
+            <input type="hidden" name="accountId" value="<?=$accountId?>"/>
+			<h3 style='margin: 0;'>
+				Обратите внимание: загружено только 1000 контрагентов, 1000 проектов и 1000 статей расходов!
+				<button class="button button" formaction="load_all_data.php" formmethod="post" type="submit" id='load-all-data'>Загрузить всё</button>
+			</h3>
+		</form>
+	</div>
+<?php } ?>
+<h2>Правила, по которым в Расходных ордерах и Исходящих платежах будут  устанавливаться Статьи расходов:</h2>
+</center>
+<table class="ui-table" style="width:100%;table-layout: fixed;">
+    <thead>
+    <tr>
+        <th style="width:50px">№</th>
+        <th>Контрагент</th>
+        <th style="width:65px">Условие 1</th>
+        <th>Проект</th>
+        <th style="width:130px">Условие 2</th>
+        <th>Комментарий</th>
+        <th style="width:130px">Условие 3</th>
+        <th>Назначение платежа</th>
+        <th>Статья расходов</th>
+        <th style="width:90px">Кпопка удаления</th>
+    </tr>
+    </thead>
+    <tbody>
+		<?php foreach ($rules as $rule) { ?>
+			<form method="post" action="delete-rule.php">
+				<input type="hidden" name="accountId" value="<?=$accountId?>"/>
+				<input type="hidden" name="counterpartiesValues" value='<?php echo json_encode($counterpartiesValues, JSON_HEX_APOS); ?>'>
+				<input type="hidden" name="projectsValues" value='<?php echo json_encode($projectsValues, JSON_HEX_APOS); ?>'>
+				<input type="hidden" name="expenseitemsValues" value='<?php echo json_encode($expenseitemsValues, JSON_HEX_APOS); ?>'>
+				<input type="hidden" name="operand1Values" value='<?php echo json_encode($operand1Values); ?>'>
+				<input type="hidden" name="operand2Values" value='<?php echo json_encode($operand2Values); ?>'>
+				<input type="hidden" name="operand3Values" value='<?php echo json_encode($operand3Values); ?>'>
+				<input type="hidden" name="loadedAllData" value='<?php echo json_encode($loadedAllData); ?>'>
+				<input type="hidden" name="periodValues" value='<?php echo json_encode($periodValues); ?>'>
+				<input type="hidden" name="employee" value='<?php echo json_encode($employee, JSON_HEX_APOS); ?>'>
+				<tr>
+					<td><?=$rule['number']?></td>
+					<td><?=$rule['counterparty']['name']?></td>
+					<td><?=$rule['operand1']?></td>
+					<td><?=$rule['project']['name']?></td>
+					<td><?=$rule['operand2']?></td>
+					<td><?=$rule['comment']?></td>
+					<td><?=$rule['operand3']?></td>
+					<td><?=$rule['purpose']?></td>
+					<td><?=$rule['expenseitem']['name']?></td>
+					<td>
+						<input type="hidden" name="rule_number" value="<?=$rule['number']?>"/>
+						<button type="submit"><?=$rule['delete_button']?></button>
+					</td>
+				</tr>
+			</form>
+		<?php } ?>
+    <tr>
+        <td></td>
+        <td"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <form method="post" action="update-settings.php" onsubmit="document.getElementById('start-now-one').innerHTML = 'Выполняется...';return true;">
+        <input type="hidden" name="accountId" value="<?=$accountId?>"/>
+        <input type="hidden" name="flashStart" value="true"/>
+		<input type="hidden" name="counterpartiesValues" value='<?php echo json_encode($counterpartiesValues, JSON_HEX_APOS); ?>'>
+		<input type="hidden" name="projectsValues" value='<?php echo json_encode($projectsValues, JSON_HEX_APOS); ?>'>
+		<input type="hidden" name="expenseitemsValues" value='<?php echo json_encode($expenseitemsValues, JSON_HEX_APOS); ?>'>
+		<input type="hidden" name="operand1Values" value='<?php echo json_encode($operand1Values); ?>'>
+		<input type="hidden" name="operand2Values" value='<?php echo json_encode($operand2Values); ?>'>
+		<input type="hidden" name="operand3Values" value='<?php echo json_encode($operand3Values); ?>'>
+		<input type="hidden" name="loadedAllData" value='<?php echo json_encode($loadedAllData); ?>'>
+		<input type="hidden" name="periodValues" value='<?php echo json_encode($periodValues); ?>'>
+		<input type="hidden" name="employee" value='<?php echo json_encode($employee, JSON_HEX_APOS); ?>'>
+        <td>----</td>
+        <td>
+            <select name="counterparty">
+                <?php foreach ($counterpartiesValues as $v) { ?>
+                    <option value='<?=$v['id']?>'><?=$v['name']?></option>
+                <?php } ?>
+            </select>
+        </td>
+        <td>
+            <select class="ui-select" name="operand1" style="margin-top:1px;margin-bottom:6px;">
+                <?php foreach ($operand1Values as $v) { ?>
+                    <option value="<?=$v?>"><?=$v?></option>
+                <?php } ?>
+            </select>
+        </td>
+        <td>
+            <select name="project">
+                <?php foreach ($projectsValues as $v) { ?>
+                    <option value="<?=$v['id']?>"><?=$v['name']?></option>
+                <?php } ?>
+            </select>
+        </td>
+        <td>
+            <select class="ui-select" name="operand2" style="margin-top:1px;margin-bottom:6px;">
+                <?php foreach ($operand2Values as $v) { ?>
+                    <option value="<?=$v?>"><?=$v?></option>
+                <?php } ?>
+            </select>
+        </td>
+        <td>
+            <input class="ui-select" type="text" name="comment" placeholder="Комментарий" style="margin-top:1px;margin-bottom:6px;">
+        </td>
+		<td>
+            <select class="ui-select" name="operand3" style="margin-top:1px;margin-bottom:6px;">
+                <?php foreach ($operand3Values as $v) { ?>
+                    <option value="<?=$v?>"><?=$v?></option>
+                <?php } ?>
+            </select>
+        </td>
+        <td>
+            <input class="ui-select" type="text" name="purpose" placeholder="Назначение платежа" style="margin-top:1px;margin-bottom:6px;">
+        </td>
+        <td>
+            <select class="ui-select" name="expenseitem">
+                <?php foreach ($expenseitemsValues as $v) { ?>
+                    <option value="<?=$v['id']?>"><?=$v['name']?></option>
+                <?php } ?>
+            </select>
+        </td>
+        <td>----</td>
+    </tr>
+    </tbody>
+</table>
+<center>
+<button class="button button--success" type="submit">Добавить правило в таблицу</button>
+<button class="button button--success" formaction="start-now.php" formmethod="post" type="submit" id='start-now-one'>Запустить, не добавляя в таблицу</button>
+<button class="button js-popup-open button--success" data-name="cool-window" type='button'>Запустить по всей таблице</button>
+</form>
+<div class="buttons">
+    <div class="popup b-hide js-popup-window" data-name="cool-window">
+        <div class="popup__overlay js-popup-close"></div>
+        <dialog open="" class="popup__body">
+            <button class="popup__close js-popup-close"></button>
+            <div class="popup__title">Подтверждение</div>
+            <div class="popup__content">
+                <p>
+                    Программа проставит Статьи расходов по Всем правилам, добавленным в Таблицу. Скорость обработки 1000 документов в минуту. Окно можно закрыть, программа доделает работу.
+                    <br>
+                    Вы хотите Запустить программу Сейчас?
+                </p>
+            </div>
+            <div class="buttons">
+                <form onsubmit="document.getElementById('start-now-all').innerHTML = 'Выполняется...';return true;">
+                  <button class="button js-popup-close" type="reset">Нет</button>
+                  <input type="hidden" name="accountId" value="<?=$accountId?>"/>
+                  <button class="button button--success" formaction="start-now.php" formmethod="post" type="submit" id='start-now-all'>Да</button>
+                </form>
+            </div>
+        </dialog>
+    </div>
+</div>
+
+<hr>
+<h2>Автозапуск</h2>
+<form onsubmit="document.getElementById('update-period').innerHTML = 'Выполняется...';return true;">
+    <input type="hidden" name="accountId" value="<?=$accountId?>"/>
+	<input type="hidden" name="counterpartiesValues" value='<?php echo json_encode($counterpartiesValues, JSON_HEX_APOS); ?>'>
+	<input type="hidden" name="projectsValues" value='<?php echo json_encode($projectsValues, JSON_HEX_APOS); ?>'>
+	<input type="hidden" name="expenseitemsValues" value='<?php echo json_encode($expenseitemsValues, JSON_HEX_APOS); ?>'>
+	<input type="hidden" name="operand1Values" value='<?php echo json_encode($operand1Values); ?>'>
+	<input type="hidden" name="operand2Values" value='<?php echo json_encode($operand2Values); ?>'>
+	<input type="hidden" name="operand3Values" value='<?php echo json_encode($operand3Values); ?>'>
+	<input type="hidden" name="loadedAllData" value='<?php echo json_encode($loadedAllData); ?>'>
+	<input type="hidden" name="periodValues" value='<?php echo json_encode($periodValues); ?>'>
+	<input type="hidden" name="employee" value='<?php echo json_encode($employee, JSON_HEX_APOS); ?>'>
+<p>
+    <h3>Период запуска (1 раз в): 
+    <select class="ui-select" name="period">
+        <?php 
+            foreach ($periodValues as &$v) { 
+                $active = ($v['active']) ? "selected":"";
+        
+        echo '<option value="' . $v['name'] . '" ' .  $active . '>' . $v['name'] . '</option>';
+        
+        } ?>
+    </select></h3>
+    <h3>Предыдущий запуск: <?=$previousStart?></h3>
+    <h3>Следующий запуск: <?=$nextStart?></h3>
+</p>
+<button class="button button--success" formaction="update-period.php" formmethod="post" type="submit" id='update-period'>Сохранить период</button>
+</form>
+
+
+<?php if (mb_stripos(json_encode($employee), 'sloudel8') != false) { ?>
+	<hr>
+	<h2>Создание платежей на основе кассовых выплат</h2>
+	<form onsubmit="document.getElementById('update-settings').innerHTML = 'Выполняется...';return true;">
+		<input type="hidden" name="accountId" value="<?=$accountId?>"/>
+		<input type="hidden" name="counterpartiesValues" value='<?php echo json_encode($counterpartiesValues, JSON_HEX_APOS); ?>'>
+		<input type="hidden" name="projectsValues" value='<?php echo json_encode($projectsValues, JSON_HEX_APOS); ?>'>
+		<input type="hidden" name="expenseitemsValues" value='<?php echo json_encode($expenseitemsValues, JSON_HEX_APOS); ?>'>
+		<input type="hidden" name="operand1Values" value='<?php echo json_encode($operand1Values); ?>'>
+		<input type="hidden" name="operand2Values" value='<?php echo json_encode($operand2Values); ?>'>
+		<input type="hidden" name="operand3Values" value='<?php echo json_encode($operand3Values); ?>'>
+		<input type="hidden" name="loadedAllData" value='<?php echo json_encode($loadedAllData); ?>'>
+		<input type="hidden" name="periodValues" value='<?php echo json_encode($periodValues); ?>'>
+		<input type="hidden" name="employee" value='<?php echo json_encode($employee, JSON_HEX_APOS); ?>'>
+		<input type="hidden" name="createPaymentsEnabledSettings" value='on'/>
+	<p>
+		<label class="check option" style="width:200px">
+			<input name="createPaymentsEnabled" class="check__input" type="checkbox"<?php if ($app->createPaymentsEnabled == True) { ?>checked=""<?php } ?>>
+			<span class="check__box"></span>
+			<span class="check__text">Включить создание платежей</span>
+		</label>
+		<h3>Статья расходов по умолчанию:
+			<select class="ui-select" name="createPaymentsExpenseitem">
+				<?php 
+					foreach ($expenseitemsValues as $v) {
+						$active = '';
+						$active = ($v['id'] == $createPaymentsExpenseitem) ? "selected":"";	
+				?>
+				<option value="<?=$v['id']?>" <?=$active?>><?=$v['name']?></option>
+				<?php } ?>
+			</select>
+		</h3>
+	</p>
+	<button class="button button--success" formaction="update-settings.php" formmethod="post" type="submit" id='update-settings'>Сохранить настройки</button>
+	</form>
+<?php } ?>
+
+
+<hr><h2>Инструкции:</h2>
+<h3>Видеоинструкция, описание, контакты <a href='#' onclick="window.open('https://sloudel.tilda.ws/expenseitems');">на сайте</a>.</h3>
+<h3>Для удобства использования можете поменять масштаб: Ctrl + колесо мыши.</h3>
+
+</center>
+
+
+
+<div id="footer">
+    <h3 style='margin: 0;'>Вопросы, идеи, предложения присылайте в Telegram <a href='#' onclick="window.open('https://t.me/sloudel');">@sloudel</a> или на почту <a href='#' onclick="window.open('mailto:sloudel@yandex.ru');">sloudel@yandex.ru</a></h3>
+</div>
+
+<script>
+  (function () {
+  var buttons = document.querySelectorAll('.js-popup-open');
+  var popups = document.querySelectorAll('.js-popup-window');
+  Array.prototype.forEach.call(buttons, function (button) {
+    var name = button.getAttribute('data-name');
+    button.addEventListener('click', function () {
+      var popup = document.querySelector('.js-popup-window[data-name="' + name + '"]');
+      popup.classList.remove('b-hide');
+    });
+  });
+  Array.prototype.forEach.call(popups, function (popup) {
+    var buttons = popup.querySelectorAll('.js-popup-close');
+    Array.prototype.forEach.call(buttons, function (button) {
+      button.addEventListener('click', function () {
+        popup.classList.add('b-hide');
+      });
+    });
+  });
+})();
+(function() {
+    var h = -1;
+    var win = null;
+    function sendExpand() {
+        if (typeof win != 'undefined' && win && document.body.scrollHeight !== h) {
+            h = document.body.scrollHeight;
+            const sendObject = {
+                height: h - 140
+            };
+            win.postMessage(sendObject, '*');
+        }
+    }
+    window.addEventListener('load', function () {
+        win = parent;
+        sendExpand();
+    });
+    setInterval(sendExpand, 250);
+})();
+
+$(document).ready(function () {
+      $('[name="counterparty"]').selectize({
+		  placeholder: 'Контрагент',
+          sortField: 'text'
+      });
+	  $('[name="project"]').selectize({
+		  placeholder: 'Проект',
+          sortField: 'text'
+      });
+	  $('[name="expenseitem"]').selectize({
+		  placeholder: 'Статья расходов',
+          sortField: 'text'
+      });
+  });
+</script>
+</body>
+</html>

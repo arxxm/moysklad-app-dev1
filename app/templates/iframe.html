@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<html lang="ru">
+{{template "header"}}
+{{template "head" .}}
+
+<center>
+    {{if .errorMessage}}
+    <div id="error_header">
+        <h3 style='margin: 0;'>
+            {{ .errorMessage}}
+        </h3>
+    </div>
+    {{end}}
+    {{if .successMessage}}
+    <div id="success_header">
+        <h3 style='margin: 0;'>
+            {{ .successMessage}}
+        </h3>
+    </div>
+    {{end}}
+    {{if .update}}
+    <div id="update-header">
+        <h3 style='margin: 0;'>
+            <div>{{ .update}}</div>
+        </h3>
+    </div>
+    {{end}}
+
+    <h2>Правила, по которым в Расходных ордерах и Исходящих платежах будут устанавливаться Статьи расходов:</h2>
+
+    <table class="ui-table" style="width:100%;table-layout: fixed;">
+        <thead>
+            <tr>
+                <th style="width:50px">№</th>
+                <th>Контрагент</th>
+                <th style="width:95px">Условие 1</th>
+                <th>Проект</th>
+                <th style="width:130px">Условие 2</th>
+                <th>Комментарий</th>
+                <th style="width:130px">Условие 3</th>
+                <th>Назначение платежа</th>
+                <th>Статья расходов</th>
+                <th style="width:90px">Кпопка удаления</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            {{if .rulesList}}
+            {{range index .rulesList}}
+            <form method="post" action="/go-apps/dev1/delete-rule">
+                <input type="hidden" name="accountId" value="" />
+                <input type="hidden" name="counterpartiesValues" value=''>
+                <input type="hidden" name="projectsValues" value=''>
+                <input type="hidden" name="expenseitemsValues" value=''>
+                <input type="hidden" name="operand1Values" value=''>
+                <input type="hidden" name="operand2Values" value=''>
+                <input type="hidden" name="operand3Values" value=''>
+                <input type="hidden" name="loadedAllData" value=''>
+                <input type="hidden" name="periodValues" value=''>
+                <input type="hidden" name="employee" value=''>
+                <tr>
+                    <td>{{ .Nomer }}</td>
+                    <td>{{ .CounName }}</td>
+                    <td>{{ .Operand1 }}</td>
+                    <td>{{ .Project }}</td>
+                    <td>{{ .Operand2 }}</td>
+                    <td>{{ .Comment }}</td>
+                    <td>{{ .Operand3 }}</td>
+                    <td>{{ .Purpose }}</td>
+                    <td>{{ .EiName }}</td>
+                    <td>
+                        <input type="hidden" name="rule_id" value="{{ .Id }}" />
+                        <button type="submit">Удалить</button>
+                    </td>
+                </tr>
+            </form>
+            {{end}}
+            {{else}}
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <div>В списке пока нет правил</div>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            {{end}}
+            <tr>
+                <form action="/go-apps/dev1/post-rules" method="post">
+                    <td>----</td>
+                    <td>
+                        <select class="ui-select" name="counterparty" style="margin-top:1px;margin-bottom:6px;">
+                            <option value="0"> </option>
+                            {{if .conterpartiesList}}
+                            {{range index .conterpartiesList}}
+                            <option value="{{ .Id }} ">{{ .Name }}</option>
+                            {{end}}
+                            {{end}}
+                        </select>
+                    </td>
+                    <td>
+                        <select class="ui-select" name="operand1" style="margin-top:1px;margin-bottom:6px;">
+                            {{if .operand1}}
+                            {{range index .operand1}}
+                            <option value="{{ . }}">{{ . }}</option>
+                            {{end}}
+                            {{end}}
+                        </select>
+                    </td>
+                    <td>
+                        <select class="ui-select" name="project" style="margin-top:1px;margin-bottom:6px;">
+                            <option value="0"> </option>
+                            {{if .projects}}
+                            {{range index .projects}}
+                            <option value="{{ .Id }}">{{ .Name }}</option>
+                            {{end}}
+                            {{end}}
+                        </select>
+                    </td>
+                    <td>
+                        <select class="ui-select" name="operand2" style="margin-top:1px;margin-bottom:6px;">
+                            {{if .operand2}}
+                            {{range index .operand2}}
+                            <option value="{{ . }}">{{ . }}</option>
+                            {{end}}
+                            {{end}}
+                        </select>
+                    </td>
+                    <td>
+                        <input class="ui-select" type="text" name="comment" placeholder="Комментарий"
+                            style="margin-top:1px;margin-bottom:6px;">
+                    </td>
+                    <td>
+                        <select class="ui-select" name="operand3" style="margin-top:1px;margin-bottom:6px;">
+                            {{if .operand3}}
+                            {{range index .operand3}}
+                            <option value="{{ . }}">{{ . }}</option>
+                            {{end}}
+                            {{end}}
+                        </select>
+                    </td>
+                    <td>
+                        <input class="ui-select" type="text" name="purpose" placeholder="Назначение платежа"
+                            style="margin-top:1px;margin-bottom:6px;">
+                    </td>
+                    <td>
+                        <select class="ui-select" name="expenseitem">
+                            <option value="0" placeholder="Контрагент"> </option>
+                            {{if .expenseItems}}
+                            {{range index .expenseItems}}
+                            <option value="{{ .Id }}">{{ .Name }}</option>
+                            {{end}}
+                            {{end}}
+                        </select>
+                    </td>
+                    <td>----</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <input name="accountId" value="{{ .accountId }}" hidden>
+    
+    <button class="button button--success" type="submit">Добавить правило в таблицу</button>
+    </form>
+    <div>
+        <p></p>
+        <form action="/go-apps/dev1/manual-start" method="POST">
+            <p>
+                <label for="startDate">с:</label>
+                <input type="date" id="startDate" name="startDate" />
+                <label for="endDate">по:</label>
+                <input type="date" id="endDate" name="endDate" />
+            </p>
+            <p>
+                <button class="button button--success" type="sybmit">Запустить по всем платежам</button>
+            </p>
+        </form>
+    </div>
+
+    {{ with $x := index . "reverse" }}
+    {{ call $x "foobar" }} &lt;-- this will call the $x with parameter "foobar"
+    {{ end }}
+
+</center>
+
+{{ template "footer"}}
