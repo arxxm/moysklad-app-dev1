@@ -226,7 +226,6 @@ func runOnAllPaymentsHandlerFunc(e *exemplar, myStorage *db.MyStorage) moysklada
 
 			filter := fmt.Sprintf("moment>%s 00:00:00;moment<%s 23:59:59", startDate, endDate)
 
-			// cashouts, err := getEssences(urlCashout, accessToken, filter)
 			cashouts, err := jsonapi.GetAllEntities[jsonapi.Entity](myStorage, e.accountId, "cashout", filter)
 			if err != nil {
 				return err

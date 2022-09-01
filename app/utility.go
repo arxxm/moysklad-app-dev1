@@ -184,3 +184,13 @@ func changeEssence(url, accessToken, expenseItemID string) error {
 
 	return nil
 }
+
+func getMapForWebHooks() map[string][]string {
+
+	whMap := make(map[string][]string)
+
+	whMap["paymentout"] = []string{"CREATE", "UPDATE"}
+	whMap["cashout"] = []string{"CREATE", "UPDATE"}
+
+	return whMap
+}

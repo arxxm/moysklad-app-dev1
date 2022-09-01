@@ -20,16 +20,19 @@ const (
 )
 
 func main() {
-
+	// Задаём информацию необходимую для работы приложения
 	var info = moyskladapptemplate.AppConfig{
 		ID:           "3f586619-ec7e-4464-b284-1169d9fa6958",
 		UID:          "dev1.sorochinsky",
 		SecretKey:    "ALN38ELqh6Iroor561bXKfSa1BwFlfGJNFlQFWrDQjDKTX0LdMWcxRcylAo3nmPVnpMqt1SIEtN1bYtoTk7EGMhJ5rYPi7mWNDjeS6yK9IlHSN5LLrMS3zE1p69TD9p3",
 		VendorAPIURL: "/go-apps/dev1/api/moysklad/vendor/1.0/apps/:appId/:accountId",
+		AppURL:       "https://dev1.the-progress-machine.ru/go-apps/dev1",
 	}
 
+	whMap := getMapForWebHooks()
+	info.WebHooksMap = whMap
+
 	var connectionString string = fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=require", HOST, USER, PASSWORD, DATABASE)
-	// myStorage, err := storage.NewPostgreStorage(connectionString)
 	postgreStorage, err := storage.NewPostgreStorage(connectionString)
 	myStorage := db.NewStorage(postgreStorage)
 	if err != nil {
@@ -50,7 +53,7 @@ func main() {
 
 	var runOnAllPayments = runOnAllPaymentsHandlerFunc(ex, myStorage)
 
-	//Формируем слайс с именами шаблонов. Например: []string{"header.html", "footer.html"}
+	//Формируем слайс с именами шаблонов
 	templateNames := []string{"deleted.html", "header.html", "footer.html", "onfilter.html", "added.html"}
 
 	// Создаем приложение
