@@ -1,6 +1,8 @@
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/MaLowBar/moysklad-app-template v0.2.2-beta h1:qTlhGafH0sVbhv+jnafSLTym4i1afQH11RnsrrN0b+Y=
 github.com/MaLowBar/moysklad-app-template v0.2.2-beta/go.mod h1:XvWfPAsgd5429ZrMm39vjnEk9j+pp94D84jAig3PnOs=
+github.com/MaLowBar/moysklad-app-template v0.2.3-beta h1:GkdNDsJokdvbxHhyHcITxuKccQPgrIjpeSir+E5npvE=
+github.com/MaLowBar/moysklad-app-template v0.2.3-beta/go.mod h1:XvWfPAsgd5429ZrMm39vjnEk9j+pp94D84jAig3PnOs=
 github.com/Masterminds/semver/v3 v3.1.1 h1:hLg3sBzpNErnxhQtUy/mmLR2I9foDujNK030IGemrRc=
 github.com/Masterminds/semver/v3 v3.1.1/go.mod h1:VPu/7SZ7ePZ3QOrcuXROw5FAcLl4a0cBrbBpGY/8hQs=
 github.com/cockroachdb/apd v1.1.0 h1:3LFP3629v+1aKXU5Q37mxmRxX/pIu1nijXydLShEq5I=

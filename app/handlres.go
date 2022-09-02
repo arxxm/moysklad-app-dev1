@@ -14,9 +14,9 @@ import (
 )
 
 type exemplar struct {
-	agentList   []jsonapi.Some
-	eiList      []jsonapi.Some
-	projectList []jsonapi.Some
+	agentList   []jsonapi.GetterValues
+	eiList      []jsonapi.GetterValues
+	projectList []jsonapi.GetterValues
 	accountId   string
 }
 
@@ -87,7 +87,7 @@ func iframeHandlerFunc(e *exemplar, myStorage *db.MyStorage, info moyskladapptem
 				e.projectList = append(e.projectList, p)
 			}
 
-			return c.Render(http.StatusOK, "iframe.html", map[string]interface{}{
+			return c.Render(http.StatusOK, "iframe", map[string]interface{}{
 				"fullName":          userContext.FullName,
 				"accountId":         e.accountId,
 				"rulesList":         rulesList,

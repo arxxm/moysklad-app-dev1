@@ -13,7 +13,7 @@ import (
 	"github.com/arxxm/moysklad-app-template-dev1/db"
 )
 
-func findEntitysName(s []jsonapi.Some, id string) (string, error) {
+func findEntitysName(s []jsonapi.GetterValues, id string) (string, error) {
 	if id == "0" {
 		return "", nil
 	}
@@ -156,9 +156,8 @@ func changeEssence(url, accessToken, expenseItemID string) error {
 
 	ei := jsonapi.ExpenseItemForReq{}
 	ei.ExpenseItem.Meta.Href = "https://online.moysklad.ru/api/remap/1.2/entity/expenseitem/" + expenseItemID
-	ei.ExpenseItem.Meta.MetaDataHref = "https://online.moysklad.ru/api/remap/1.2/entity/expenseitem/metadata"
+	ei.ExpenseItem.Meta.MetadataHref = "https://online.moysklad.ru/api/remap/1.2/entity/expenseitem/metadata"
 	ei.ExpenseItem.Meta.Type = "expenseitem"
-	ei.ExpenseItem.Meta.MediaType = "application/json"
 
 	jsonBody, err := json.Marshal(ei)
 	if err != nil {

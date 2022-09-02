@@ -3,7 +3,7 @@ module github.com/arxxm/moysklad-app-template-dev1
 go 1.18
 
 require (
-	github.com/MaLowBar/moysklad-app-template v0.2.2-beta
+	github.com/MaLowBar/moysklad-app-template v0.2.3-beta
 	github.com/labstack/echo/v4 v4.8.0
 )
 
