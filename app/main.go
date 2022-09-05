@@ -54,7 +54,7 @@ func main() {
 	var runOnAllPayments = runOnAllPaymentsHandlerFunc(ex, myStorage)
 
 	//Формируем слайс с именами шаблонов
-	templateNames := []string{"deleted.html", "header.html", "footer.html", "onfilter.html", "added.html"}
+	templateNames := []string{"deleted.html", "header.html", "footer.html", "onfilter.html", "added.html", "failonfilter.html"}
 
 	// Создаем приложение
 	app := moyskladapptemplate.NewApp(&info, myStorage, templateNames, iframeHandler, addRuleHandler, webhooksHandler, delRuleHandler, runOnAllPayments)

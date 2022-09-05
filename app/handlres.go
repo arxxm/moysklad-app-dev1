@@ -215,6 +215,14 @@ func runOnAllPaymentsHandlerFunc(e *exemplar, myStorage *db.MyStorage) moysklada
 					"data": nil})
 			}
 
+			r, err := checkPerLessThenYear(startDate, endDate)
+			if err != nil {
+				return err
+			}
+			if !r {
+				return c.Render(http.StatusOK, "failonfilter", nil)
+			}
+
 			rules, err := myStorage.GetRules(e.accountId)
 			if err != nil {
 				return err

@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/MaLowBar/moysklad-app-template/jsonapi"
 	"github.com/MaLowBar/moysklad-app-template/utils"
@@ -192,4 +193,23 @@ func getMapForWebHooks() map[string][]string {
 	whMap["cashout"] = []string{"CREATE", "UPDATE"}
 
 	return whMap
+}
+
+func checkPerLessThenYear(startDate, endDate string) (bool, error) {
+	t1, err := time.Parse("2006-01-02", startDate)
+	if err != nil {
+		return false, err
+	}
+
+	t2, err := time.Parse("2006-01-02", endDate)
+	if err != nil {
+		return false, err
+	}
+
+	days := t2.Sub(t1).Hours() / 24
+	if days > 365 {
+		return false, nil
+	} else {
+		return true, nil
+	}
 }
